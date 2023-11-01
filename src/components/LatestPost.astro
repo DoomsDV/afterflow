@@ -1,6 +1,22 @@
 ---
-
+import { urlAPI, urlAPIHome } from "../static/ts/vars";
+const request = await fetch(urlAPI + "/latest_post/");
+const post = await request.json();
 ---
-<article>
-    <h1>Última publicación</h1>
-</article>
+<section>
+    <h1 class="text-6xl font-bold my-5 text-zinc-700">Última publicación</h1>
+    <article class="flex gap-x-12 mt-20 items-center">
+        <img src={urlAPIHome + post.image} alt="Imagen de portada del artículo" class="w-1/2 rounded-lg">
+        <div>
+            <ul class="flex space-x-4">
+                {
+                    post.categories.map((category:any) => {
+                        return <li><a href={"/categoria/" + category.slug} title={category.name} class="text-xs rounded-lg px-2 py-1 bg-zinc-100 text-zinc-600 font-semibold"><strong>#</strong>{category.name.toLowerCase()}</a></li>
+                    })
+                }
+            </ul>
+            <h2 class="text-4xl font-bold text-zinc-700 mt-8 mb-5"><a href="#" class="hover:text-blue-500 transition-colors">{post.title}</a></h2>
+            <p class="text-zinc-600 line-clamp-4">{post.summary}</p>
+        </div>
+    </article>
+</section>
