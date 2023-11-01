@@ -4,18 +4,24 @@ const request = await fetch(urlAPI + "/latest_post/");
 const post = await request.json();
 ---
 <section>
-    <h1 class="text-5xl font-bold my-5 text-slate-600 bsm:text-4xl xr:text-3xl">Última publicación</h1>
+    <h1 class="text-5xl font-bold my-5 text-slate-600 bsm:text-4xl xr:text-3xl flex items-center">Última publicación
+        <svg class="icon icon-tabler icon-tabler-feather inline-block ml-2" width="35" height="35" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M4 20l10 -10m0 -5v5h5m-9 -1v5h5m-9 -1v5h5m-5 -5l4 -4l4 -4"></path>
+            <path d="M19 10c.638 -.636 1 -1.515 1 -2.486a3.515 3.515 0 0 0 -3.517 -3.514c-.97 0 -1.847 .367 -2.483 1m-3 13l4 -4l4 -4"></path>
+         </svg>
+    </h1>
     <article class="flex gap-x-12 mt-16 items-center lg:flex-wrap">
         <img src={urlAPIHome + post.image} alt="Imagen de portada del artículo" class="w-1/2 rounded-lg lg:w-[80%] lg:min-w-[80%] lg:mx-auto">
         <div class="lg:mt-5">
             <ul class="flex space-x-4">
                 {
                     post.categories.map((category:any) => {
-                        return <li><a href={"/categoria/" + category.slug} title={category.name} class="text-xs rounded-xl px-3 py-1 bg-zinc-100 text-zinc-600 font-semibold"><strong>#</strong>{category.name.toLowerCase()}</a></li>
+                        return <li><a href={"/categoria/" + category.slug} title={category.name} class="text-xs rounded-xl px-3 py-1 bg-zinc-100 text-zinc-600 font-medium"><strong>#</strong>{category.name.toLowerCase()}</a></li>
                     })
                 }
             </ul>
-            <h2 class="text-4xl font-bold text-slate-700 mt-8 mb-5 bsm:text-3xl xr:text-2xl"><a href="#" title={post.title} class="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-br hover:from-blue-400 hover:to-blue-600 hover:transition-colors">{post.title}</a></h2>
+            <h2 class="text-4xl font-extrabold text-slate-700 mt-8 mb-5 blg:font-bold bsm:text-3xl xr:text-2xl"><a href="#" title={post.title} class="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-br hover:from-blue-400 hover:to-blue-600 hover:transition-colors">{post.title}</a></h2>
             <p class="text-zinc-600 line-clamp-4 mb-5">{post.summary}</p>
             <a href="/" class="rounded-xl font-medium text-white w-40 block text-center py-2 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-600">Leer más</a>
         </div>
