@@ -1,6 +1,10 @@
 ---
 import Chevron from "../components/icons/Chevron-down.astro";
 import User from "../components/icons/User-cog.astro";
+import {urlAPI} from "../static/ts/vars";
+
+const request = await fetch(urlAPI + "/categories/");
+const categories = await request.json();
 
 ---
 <header>
@@ -16,8 +20,15 @@ import User from "../components/icons/User-cog.astro";
                         <Chevron />
                     </label>
                     <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 mt-2">
-                        <li><a>Item 1</a></li>
-                        <li><a>Item 2</a></li>
+                        {
+                            categories.map((category:any) => {
+                                return (
+                                    <li>
+                                        <a href={"/categoria/" + category.slug} title={category.name}>{category.name}</a>
+                                    </li>
+                                )
+                            })
+                        }
                     </ul>
                 </li>
                 <li><a href="/" title="Contacto">Contacto</a></li>
