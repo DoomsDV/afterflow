@@ -1,0 +1,17 @@
+---
+import FilterArticles from "../../components/FilterArticles.astro";
+import Layout from "../../layouts/Layout.astro";
+import { urlAPI } from "../../static/ts/vars";
+
+export const prerender = false;
+const {slug} = Astro.params;
+
+const request = await fetch(urlAPI + `/posts/category/${slug}/`)
+const posts = await request.json();
+---
+
+<Layout title="Blog">
+    <main class="md:px-20 bsm:px-10 xr:px-5 px-[6rem]">
+        <FilterArticles posts={posts} />
+    </main>
+</Layout>

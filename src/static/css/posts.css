@@ -1,0 +1,9 @@
+@font-face {
+        font-family: 'Roboto-medium';
+        src: url(/fonts/Roboto/Roboto-Medium.ttf);
+        font-display: swap;
+        font-weight: 500;
+}
+h3 {
+    font-family: 'Roboto-medium';
+}

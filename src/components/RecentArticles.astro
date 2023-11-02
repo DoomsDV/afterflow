@@ -1,19 +1,22 @@
 ---
-import { urlAPI } from "../static/ts/vars";
-const request = await fetch(urlAPI + "/posts/");
-const posts = await request.json();
+import "../static/css/posts.css";
+interface Props {
+    posts: [{}]
+}
+
+const {posts} = Astro.props;
 ---
 <section class="text-center mt-12">
     <h2 class="text-4xl font-extrabold">Artículos recientes</h2>
     <p class="text-slate-600 my-6">Te invitamos a leer nuestros artículos recientes, donde encontrarás consejos, noticias, opiniones y análisis de expertos. Puedes explorar nuestras publicaciones recientes a continuación:</p>
-    <ul class="grid grid-cols-3 items-stretch justify-around gap-x-10 blg:grid-cols-2 blg:gap-y-10 sm:grid-cols-1">
+    <ul class="grid grid-cols-3 items-stretch justify-around gap-10 blg:grid-cols-2 blg:gap-y-10 sm:grid-cols-1">
         {
             posts.map((post:any) => {
                 return (
-                    <li class=" bg-zinc-50/80 border-[1px] p-5 rounded-lg grid grid-cols-1 ">
-                        <a href={"/blog/" + post.slug} class="self-center"><img src={post.image} alt="Imagen de portada" class="h-46 object-contain"></a>
+                    <li class="bg-zinc-50/80 border-[1px] p-5 rounded-lg grid grid-cols-1">
+                        <a href={"/blog/" + post.slug} title={post.title} class="self-center"><img src={post.image} alt="Imagen de portada" class="h-46 object-contain"></a>
                         <div class="self-end">
-                            <h3 class="text-xl line-clamp-2 font-bold text-zinc-700"><a href={"/blog/" + post.slug}>{post.title}</a></h3>
+                            <h3 class="text-xl line-clamp-2 font-bold text-zinc-700 mt-5"><a href={"/blog/" + post.slug}>{post.title}</a></h3>
                             <p class="line-clamp-3 text-zinc-600 text-sm mt-2">{post.summary}</p>
                         </div>
                     </li>
@@ -22,14 +25,3 @@ const posts = await request.json();
         }
     </ul>
 </section>
-<style>
-    @font-face {
-        font-family: 'Roboto-medium';
-        src: url(/fonts/Roboto/Roboto-Medium.ttf);
-        font-display: swap;
-        font-weight: 500;
-    }
-    h3 {
-        font-family: 'Roboto-medium';
-    }
-</style>

@@ -7,7 +7,7 @@ const request = await fetch(urlAPI + "/categories/");
 const categories = await request.json();
 
 ---
-<header class="sticky top-0">
+<header class="sticky top-0 z-50">
     <nav class="flex items-center px-4 py-3 bg-white justify-between">
         <div class="flex items-center space-x-8">
             <a href="/" title="Inicio" class="inline-block">
@@ -19,7 +19,7 @@ const categories = await request.json();
                     <label tabindex="0" class="cursor-pointer flex items-center">Categorías
                         <Chevron />
                     </label>
-                    <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 mt-2">
+                    <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 mt-2">
                         {
                             categories.map((category:any) => {
                                 return (

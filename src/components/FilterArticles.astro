@@ -1,0 +1,38 @@
+---
+import { urlAPIHome } from '../static/ts/vars';
+import "../static/css/posts.css";
+
+interface Props {
+    posts: [{}]
+}
+
+const {posts} = Astro.props;
+posts.map((post:any) => {
+    post.modified_on = new Date(parseInt(post.modified_on), 10).toLocaleDateString('es-PY',{
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    })
+})
+---
+<section>
+    <h1 class="text-4xl font-extrabold my-5 text-slate-600 xr:text-3xl flex items-center">Artículos encontrados</h1>
+    <ul class:list={[
+        posts.length > 2 ? "grid grid-cols-3 gap-8 mt-16 lg:grid-cols-2 blg:gap-y-10 sm:grid-cols-1" : "flex items-stretch gap-8 mt-16 mdl:flex-wrap"]} >
+        {
+            posts.map((post:any) => {
+                return (
+                    <li class="rounded-lg border-[1px] p-5 grid grid-cols-1" class:list={[
+                        posts.length < 3 ? "w-1/2 gap-8 rounded-lg border-[1px] mdl:w-full" : "w-auto" ]}>
+                        <a href={"/blog/" + post.slug} title={post.title} class="self-center h-48 relative overflow-hidden"><img src={urlAPIHome + post.image} alt="Imagen de portada" class="object-contain z-10"></a>
+                        <div class="self-end">
+                            <span class="text-xs rounded-lg bg-zinc-100/80 px-2 py-1 font-semibold text-slate-600">{post.modified_on}</span>
+                            <h3 class="text-xl mt-5 line-clamp-2 font-bold text-zinc-700"><a href={"/blog/" + post.slug}>{post.title}</a></h3>
+                            <p class="line-clamp-3 text-zinc-600 text-sm mt-2">{post.summary}</p>
+                        </div>
+                    </li>
+                )
+            })
+        }    
+    </ul>
+</section>
