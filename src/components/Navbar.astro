@@ -1,4 +1,5 @@
 ---
+import SearchInput from "../components/jsx/SearchInput";
 import Chevron from "../components/icons/Chevron-down.astro";
 import User from "../components/icons/User-cog.astro";
 import {urlAPI} from "../static/ts/vars";
@@ -36,11 +37,8 @@ const categories = await request.json();
                 <li><a href="/" title="Servicios">Servicios</a></li>
             </ul>
         </div>
-        <div class="flex items-center w-[350px] space-x-5 mdl:hidden">
-            <form class="w-full" title="Buscar artículos" aria-label="Buscar artículos">
-                <label for="search" class="hidden">Buscar artículo</label>
-                <input type="text" placeholder="Buscar artículos" id="search" class="bg-zinc-100/80 text-sm placeholder:text-zinc-400 placeholder:text-sm px-3 h-9 rounded-lg w-full outline-[1px] outline-slate-100" />
-            </form>
+        <div class="flex items-center w-[350px] space-x-5 mdl:hidden justify-end">
+            <SearchInput client:only="preact" />
             <div class="dropdown dropdown-end">
                 <label tabindex="0" class="btn-circle avatar">
                     <button title="Perfil" class="w-7 rounded-full">
