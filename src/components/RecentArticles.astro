@@ -5,6 +5,15 @@ interface Props {
 }
 
 const {posts} = Astro.props;
+
+posts.map((post:any) => {
+    post.modified_on = new Date(parseInt(post.modified_on), 10).toLocaleDateString('es-PY',{
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    })
+})
+
 ---
 <section class="text-center mt-12">
     <h2 class="text-4xl font-extrabold">Artículos recientes</h2>
@@ -13,10 +22,13 @@ const {posts} = Astro.props;
         {
             posts.map((post:any) => {
                 return (
-                    <li class="bg-zinc-50/80 border-[1px] p-5 rounded-lg grid grid-cols-1">
-                        <a href={"/blog/" + post.slug} title={post.title} class="self-center"><img src={post.image} alt="Imagen de portada" class="h-46 object-contain"></a>
-                        <div class="self-end">
-                            <h3 class="text-xl line-clamp-2 font-bold text-zinc-700 mt-5"><a href={"/blog/" + post.slug}>{post.title}</a></h3>
+                    <li class="bg-zinc-50/80 border-[1px] p-5 rounded-lg grid grid-cols-1" class:list={[
+                        posts.length > 3 && posts.length % 3 != 0 ? 'last:col-span-2' : ''
+                    ]}>
+                        <a href={"/blog/" + post.slug} title={post.title} class="self-center relative h-48"><img src={post.image} alt="Imagen de portada" class="h-46 absolute h-full w-full object-cover object-center rounded-lg"></a>
+                        <div class="self-end my-2">
+                            <span class="text-xs rounded-lg bg-zinc-100/80 px-2 py-1 font-semibold text-slate-600">{post.modified_on}</span>
+                            <h3 class="text-xl line-clamp-2 font-bold text-zinc-700 mt-5"><a href={"/blog/" + post.slug} title={post.title} class="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-br hover:from-blue-400 hover:to-blue-600 hover:transition-colors">{post.title}</a></h3>
                             <p class="line-clamp-3 text-zinc-600 text-sm mt-2">{post.summary}</p>
                         </div>
                     </li>
