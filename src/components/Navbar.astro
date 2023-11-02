@@ -2,6 +2,7 @@
 import Chevron from "../components/icons/Chevron-down.astro";
 import User from "../components/icons/User-cog.astro";
 import {urlAPI} from "../static/ts/vars";
+import "../static/css/index.css";
 
 const request = await fetch(urlAPI + "/categories/");
 const categories = await request.json();
@@ -60,8 +61,3 @@ const categories = await request.json();
         </div>
     </nav>
 </header>
-<style>
-    * {
-        font-family:  sans-serif;
-    }
-</style>
