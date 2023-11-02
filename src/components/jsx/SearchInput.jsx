@@ -42,10 +42,10 @@ export default function SearchInput() {
     }
     return (
         <>
-            <div className={"relative"}>
-                <form class="w-full" title="Buscar artículos" aria-label="Buscar artículos" className={"mb-2"}>
+            <div className={"relative flex items-center"}>
+                <form class="w-full" title="Buscar artículos" aria-label="Buscar artículos">
                     <label for="search" class="hidden">Buscar artículo</label>
-                    <input onFocus={getPosts} onBlur={removePostPanel} onInput={getPosts} type="text" placeholder="Buscar artículos" id="search" class="bg-zinc-100/80 text-sm placeholder:text-zinc-400 placeholder:text-sm px-3 h-9 rounded-lg w-full outline-[1px] outline-slate-100" />
+                    <input onFocus={getPosts} onBlur={removePostPanel} onInput={getPosts} type="text" placeholder="Buscar artículos" id="search" class="bg-zinc-100/80 text-sm placeholder:text-zinc-400 placeholder:text-sm px-3 h-9 rounded-lg w-full outline-[1px] outline-slate-100 dark:bg-zinc-900 dark:outline-[1px] dark:outline-zinc-800 dark:placeholder:text-zinc-200 dark:text-zinc-200" />
                 </form>
                 <div id={"posts"} className={"hidden rounded-lg shadow px-3 py-2 w-80 max-h-[200px] absolute right-[-2rem] overflow-y-auto bg-white"}></div>
             </div>
