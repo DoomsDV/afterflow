@@ -13,16 +13,20 @@ posts.map((post:any) => {
         day: 'numeric'
     })
 })
+
+const postsLength = posts.length
 ---
 <section>
     <h1 class="text-4xl font-extrabold my-5 text-slate-600 xr:text-3xl flex items-center">Artículos encontrados</h1>
     <ul class="gap-8 mt-16 text-center" class:list={[
-        posts.length > 2 ? "grid grid-cols-3 lg:grid-cols-2 blg:gap-y-10 sm:grid-cols-1" : "flex items-stretch mdl:flex-wrap"]} >
+        postsLength > 2 ? "grid grid-cols-3 lg:grid-cols-2 blg:gap-y-10 mdl:grid-cols-1" : "flex items-stretch mdl:flex-wrap"]} >
         {
             posts.map((post:any) => {
                 return (
                     <li class="rounded-lg border-[1px] p-5 grid grid-cols-1" class:list={[
-                        posts.length < 3 ? "w-1/2 gap-8 rounded-lg border-[1px] blg:w-full" : "", posts.length > 3 && posts.length % 3 != 0 ? 'last:col-span-2' : '']}>
+                        postsLength < 3 ? "w-1/2 gap-8 rounded-lg border-[1px] blg:w-full" : "", 
+                        postsLength > 3 && postsLength % 3 != 0 ? 'last:col-span-2 mdl:last:col-span-1' : '', 
+                        postsLength % 2 === 0 ? 'lg:last:col-span-1' : '']}>
                         <a href={"/blog/" + post.slug} title={post.title} class="self-center h-48 relative "><img src={urlAPIHome + post.image} alt="Imagen de portada" class="h-46 absolute h-full w-full object-cover object-center rounded-lg"></a>
                         <div class="self-end my-2">
                             <span class="text-xs rounded-lg bg-zinc-100/80 px-2 py-1 font-semibold text-slate-600">{post.modified_on}</span>
