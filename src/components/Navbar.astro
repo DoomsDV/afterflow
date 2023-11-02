@@ -16,9 +16,9 @@ const categories = await request.json();
             <ul class="flex items-center space-x-5 text-zinc-600 text-sm font-medium">
                 <li><a href="/" title="Inicio">Inicio</a></li>
                 <li class="dropdown">
-                    <label tabindex="0" class="cursor-pointer flex items-center">Categorías
+                    <button tabindex="0" title="Categorías" class="cursor-pointer flex items-center">Categorías
                         <Chevron />
-                    </label>
+                    </button>
                     <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 mt-2">
                         {
                             categories.map((category:any) => {
@@ -36,8 +36,9 @@ const categories = await request.json();
             </ul>
         </div>
         <div class="flex items-center w-[350px] space-x-5 mdl:hidden">
-            <form class="w-full" title="Buscar artículos">
-                <input type="text" placeholder="Buscar artículos" class="bg-zinc-100/80 text-sm placeholder:text-zinc-400 placeholder:text-sm px-3 h-9 rounded-lg w-full outline-[1px] outline-slate-100" />
+            <form class="w-full" title="Buscar artículos" aria-label="Buscar artículos">
+                <label for="search" class="hidden">Buscar artículo</label>
+                <input type="text" placeholder="Buscar artículos" id="search" class="bg-zinc-100/80 text-sm placeholder:text-zinc-400 placeholder:text-sm px-3 h-9 rounded-lg w-full outline-[1px] outline-slate-100" />
             </form>
             <div class="dropdown dropdown-end">
                 <label tabindex="0" class="btn-circle avatar">
