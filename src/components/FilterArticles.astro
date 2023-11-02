@@ -1,6 +1,5 @@
 ---
 import { urlAPIHome } from '../static/ts/vars';
-import "../static/css/posts.css";
 
 interface Props {
     posts: [{}]
@@ -27,7 +26,7 @@ posts.map((post:any) => {
                         <a href={"/blog/" + post.slug} title={post.title} class="self-center h-48 relative "><img src={urlAPIHome + post.image} alt="Imagen de portada" class="h-46 absolute h-full w-full object-cover object-center rounded-lg"></a>
                         <div class="self-end my-2">
                             <span class="text-xs rounded-lg bg-zinc-100/80 px-2 py-1 font-semibold text-slate-600">{post.modified_on}</span>
-                            <h3 class="text-xl mt-4 line-clamp-2 font-bold text-zinc-700"><a href={"/blog/" + post.slug} title={post.title} class="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-br hover:from-blue-400 hover:to-blue-600 hover:transition-colors">{post.title}</a></h3>
+                            <h3 class="postTitle text-xl mt-4 line-clamp-2 font-bold text-zinc-700"><a href={"/blog/" + post.slug} title={post.title} class="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-br hover:from-blue-400 hover:to-blue-600 hover:transition-colors">{post.title}</a></h3>
                             <p class="line-clamp-3 text-zinc-600 text-sm mt-2">{post.summary}</p>
                         </div>
                     </li>
