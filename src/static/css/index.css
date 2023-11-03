@@ -6,6 +6,17 @@
     src: url(/fonts/Roboto/Roboto-Medium.ttf);
     font-display: swap;
 }
+/* Date post */
+#date { 
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+    color: rgb(82 82 91);
+}
+html[class="dark"] #date {
+    color: rgb(228 228 231);
+}
+/* Title post */
 h1 {
     font-size: 3rem;
     font-weight: 800;
@@ -17,30 +28,31 @@ h1 {
 html[class='dark'] main * {
     color: rgb(212 212 216);
 }
-
-#date {
-    display: block;
-    text-align: center;
-    font-size: 1rem;
-    color: rgb(82 82 91);
+/* Subtitle post */
+h2 {
+    font-size: 1.5rem;
 }
-html[class="dark"] #date {
-    color: rgb(228 228 231);
-}
-
+/* Parrafos */
 p {
     font-size: 1rem;
     line-height: 2rem;
     margin: 1rem 0 2rem 0;
     color: rgb(48, 57, 70);
 }
-
+/* Listas */
 main li {
     list-style:disc;
     margin-left: 3rem;
     line-height: 2rem;
 }
-
-h2 {
-    font-size: 1.5rem;
+/* Block Code */
+p code {
+    padding: 3px 3px;
+    color: rgb(67, 111, 255);
+    background-color: rgba(243, 243, 243, 0.772);
+    border-radius: 5px;
+}
+html[class="dark"] p code {
+    color: rgb(67, 111, 255);
+    background-color: rgba(103, 103, 103, 0.256);
 }
