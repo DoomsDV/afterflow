@@ -1,11 +1,12 @@
 ---
-import BlogLayout from "../../layouts/BlogLayout.astro";
+import BlogLayout from "../../../layouts/BlogLayout.astro";
+import "../../../static/css/index.css";
 
 export const prerender = false;
 import { getEntry } from "astro:content";
-import page_404 from "../404.astro";
+import page_404 from "../../404.astro";
 
-const {slug} = Astro.params;
+const {id, slug} = Astro.params;
 
 let headings, Content;
 
@@ -21,5 +22,7 @@ if (entry) {
 ---
 
 <BlogLayout title={headings[0].text}>
-    <Content />
+    <main class="w-[70%] md:w-[90%] mx-auto mt-16">
+        <Content />
+    </main>
 </BlogLayout>

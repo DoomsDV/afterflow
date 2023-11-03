@@ -1,10 +1,46 @@
 * {
     font-family: sans-serif;
 }
-h1 {
-    font-size: 2.25rem;
-    font-weight: bold;
+@font-face {
+    font-family: 'Roboto-medium';
+    src: url(/fonts/Roboto/Roboto-Medium.ttf);
+    font-display: swap;
 }
-html[class='dark'], h1 {
-    color: white;
+h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 1rem 0 2rem 0;
+    text-align: center;
+    color: rgb(48, 57, 70);
+    font-family: 'Roboto-medium';
+}
+html[class='dark'] main * {
+    color: rgb(212 212 216);
+}
+
+#date {
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+    color: rgb(82 82 91);
+}
+html[class="dark"] #date {
+    color: rgb(228 228 231);
+}
+
+p {
+    font-size: 1rem;
+    line-height: 2rem;
+    margin: 1rem 0 2rem 0;
+    color: rgb(48, 57, 70);
+}
+
+main li {
+    list-style:disc;
+    margin-left: 3rem;
+    line-height: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
 }
