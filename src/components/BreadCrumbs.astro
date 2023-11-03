@@ -4,7 +4,13 @@ interface Props{
 }
 const {text} = Astro.props;
 ---
-<ul class="flex items-center space-x-3">
-	<li><a href="/blog">Blog</a></li>
-	<li>{text}</li>
+<ul class="flex px-3 py-3 items-center space-x-3 text-sm mb-10 rounded-lg bg-zinc-100 text-zinc-700 border-[1px] dark:bg-zinc-800 dark:border-zinc-600">
+	<li><a href="/" title="Blog">Blog</a></li>
+	<li>
+		<svg class="icon icon-tabler icon-tabler-chevron-right" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+			<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+			<path d="M9 6l6 6l-6 6"></path>
+		 </svg>
+	</li>
+	<li class="line-clamp-1">{text}</li>
 </ul>
