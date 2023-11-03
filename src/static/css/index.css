@@ -58,3 +58,8 @@ html[class="dark"] p code {
     background-color: rgba(103, 103, 103, 0.256);
     border: none;
 }
+@media (max-width: 880px) {
+    h1 {
+        font-size: 2rem;
+    }
+}
