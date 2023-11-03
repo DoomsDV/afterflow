@@ -1,0 +1,25 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+export const prerender = false;
+import { getEntry } from "astro:content";
+import page_404 from "../404.astro";
+
+const {slug} = Astro.params;
+
+let headings, Content;
+
+const entry = await getEntry('blog', `${slug}`);
+if (entry) {
+    const post = await entry.render();
+    headings = post.headings;
+    Content = post.Content;
+} else {
+    headings = [{text: 'Page not found'}]
+    Content = page_404
+}
+---
+
+<Layout title={headings[0].text}>
+    <Content />
+</Layout>
