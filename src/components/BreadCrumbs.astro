@@ -1,0 +1,10 @@
+---
+interface Props{
+	text: string;
+}
+const {text} = Astro.props;
+---
+<ul class="flex items-center space-x-3">
+	<li><a href="/blog">Blog</a></li>
+	<li>{text}</li>
+</ul>

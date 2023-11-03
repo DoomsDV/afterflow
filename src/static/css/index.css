@@ -40,7 +40,7 @@ p {
     color: rgb(48, 57, 70);
 }
 /* Listas */
-main li {
+main article li {
     list-style:disc;
     margin-left: 3rem;
     line-height: 2rem;
