@@ -1,0 +1,22 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import "../static/ts/CheckedTheme.ts";
+
+interface Props {
+    title: string;
+}
+const {title} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es" id="html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+    <ViewTransitions />
+</head>
+<body>
+    <slot /> 
+</body>
+</html>
