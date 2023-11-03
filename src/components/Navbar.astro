@@ -16,13 +16,13 @@ const categories = await request.json();
             <a href="/" title="Inicio" class="inline-block">
                 <img src="/logo/afterflow.png" width="60" height="60" alt="Logo de Afterflow">
             </a>
-            <ul class="flex items-center space-x-5 text-zinc-600 text-sm font-medium dark:text-zinc-200">
+            <ul class="flex items-center space-x-5 text-zinc-600 text-sm dark:text-zinc-200">
                 <li><a href="/" title="Inicio">Inicio</a></li>
                 <li class="dropdown">
                     <button tabindex="0" title="Categorías" class="cursor-pointer flex items-center">Categorías
                         <Chevron />
                     </button>
-                    <ul tabindex="0" class="dropdown-content menu p-2 shadow rounded-box w-52 mt-2 dark:bg-[#161616] dark:text-zinc-200">
+                    <ul tabindex="0" class="dropdown-content menu p-2 bg-white shadow rounded-box w-52 mt-2 dark:bg-[#161616] dark:text-zinc-200">
                         {
                             categories.map((category:any) => {
                                 return (
@@ -46,7 +46,7 @@ const categories = await request.json();
                         <User />
                     </button>
                 </label>
-                <ul tabindex="0" class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 dark:bg-[#161616] dark:text-zinc-200">
+                <ul tabindex="0" class="mt-3 z-[1] absolute top-[100%] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 dark:bg-[#161616] dark:text-zinc-200">
                     <li>
                     <a class="justify-between dark:hover:bg-zinc-800 dark:hover:text-zinc-200">
                         Profile

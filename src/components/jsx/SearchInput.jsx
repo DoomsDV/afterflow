@@ -26,7 +26,7 @@ export default function SearchInput() {
 
                     posts.map((post) => {
                         postsPanel.innerHTML += `
-                            <a href=${'/blog/' + post.slug} title=${post.title} class='block text-xs my-2 p-2 rounded-lg line-clamp-1 hover:bg-slate-50'>${post.title}</a>
+                            <a href=${'/blog/' + post.slug} title=${post.title} class='block text-xs my-2 p-2 rounded-lg line-clamp-1 hover:bg-zinc-200/60 dark:hover:bg-zinc-800 transition-colors'>${post.title}</a>
                         `
                     })
                     postsPanel.classList.remove('hidden')
@@ -45,9 +45,9 @@ export default function SearchInput() {
             <div className={"relative flex items-center"}>
                 <form class="w-full" title="Buscar artículos" aria-label="Buscar artículos">
                     <label for="search" class="hidden">Buscar artículo</label>
-                    <input onFocus={getPosts} onBlur={removePostPanel} onInput={getPosts} type="text" placeholder="Buscar artículos" id="search" class="bg-zinc-100/80 text-sm mb-1 placeholder:text-zinc-400 placeholder:text-sm px-3 h-9 rounded-lg w-full outline-[1px] outline-slate-100 dark:bg-zinc-900 dark:outline-[1px] dark:outline-zinc-800 dark:placeholder:text-zinc-200 dark:text-zinc-200" />
+                    <input onFocus={getPosts} onBlur={removePostPanel} onInput={getPosts} type="text" placeholder="Buscar artículos" id="search" class="bg-zinc-100/80 text-sm mb-1 outline-none px-3 py-2 dark:bg-zinc-800 rounded-xl dark:text-zinc-300" />
                 </form>
-                <div id={"posts"} className={"hidden rounded-lg shadow px-3 py-2 w-80 max-h-[200px] absolute right-[-2rem] overflow-y-auto bg-white top-[100%]"}></div>
+                <div id={"posts"} className={"hidden rounded-lg shadow px-3 py-2 w-80 max-h-[200px] absolute right-[-2rem] overflow-y-auto bg-white top-[100%] dark:bg-[#161616] dark:text-zinc-300"}></div>
             </div>
         </>
     )
