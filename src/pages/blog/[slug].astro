@@ -1,12 +1,12 @@
 ---
-import BlogLayout from "../../../layouts/BlogLayout.astro";
-import "../../../static/css/index.css";
+import BlogLayout from "../../layouts/BlogLayout.astro";
+import "../../static/css/index.css";
 
 export const prerender = false;
 import { getEntry } from "astro:content";
-import page_404 from "../../404.astro";
+import page_404 from "../404.astro";
 
-const {id, slug} = Astro.params;
+const {slug} = Astro.params;
 
 let headings, Content;
 

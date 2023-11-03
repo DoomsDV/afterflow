@@ -51,8 +51,10 @@ p code {
     color: rgb(67, 111, 255);
     background-color: rgba(243, 243, 243, 0.772);
     border-radius: 5px;
+    border: 1px solid #eaeaea;
 }
 html[class="dark"] p code {
     color: rgb(67, 111, 255);
     background-color: rgba(103, 103, 103, 0.256);
+    border: none;
 }
