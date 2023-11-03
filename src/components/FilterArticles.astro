@@ -17,20 +17,28 @@ posts.map((post:any) => {
 const postsLength = posts.length
 ---
 <section>
-    <h1 class="text-4xl font-extrabold my-5 text-slate-600 xr:text-3xl flex items-center dark:text-zinc-200">Artículos encontrados</h1>
+    <h1 class="text-4xl font-extrabold my-5 text-slate-600 xr:text-3xl flex items-end dark:text-zinc-300">Artículos encontrados
+        <svg class="icon icon-tabler icon-tabler-article ml-2" width="35" height="35" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path>
+            <path d="M7 8h10"></path>
+            <path d="M7 12h10"></path>
+            <path d="M7 16h10"></path>
+         </svg>
+    </h1>
     <ul class="gap-8 mt-16 text-center" class:list={[
         postsLength > 2 ? "grid grid-cols-3 lg:grid-cols-2 blg:gap-y-10 mdl:grid-cols-1" : "flex items-stretch mdl:flex-wrap"]} >
         {
             posts.map((post:any) => {
                 return (
-                    <li class="rounded-lg border-[1px] p-5 grid grid-cols-1 dark:bg-[#161616] dark:border-zinc-900 dark:shadow-xl" class:list={[
+                    <li class="rounded-lg border-[1px] p-6 grid grid-cols-1 dark:bg-[#141414] dark:border-none dark:shadow-xl" class:list={[
                         postsLength < 3 ? "w-1/2 gap-8 rounded-lg border-[1px] blg:w-full" : "", 
                         postsLength > 3 && postsLength % 3 != 0 ? 'last:col-span-2 mdl:last:col-span-1' : '', 
                         postsLength % 2 === 0 ? 'lg:last:col-span-1' : '']}>
-                        <a href={"/blog/" + post.slug} title={post.title} class="self-center h-48 relative "><img src={urlAPIHome + post.image} alt="Imagen de portada" class="h-46 absolute h-full w-full object-cover object-center rounded-lg"></a>
-                        <div class="self-end my-2">
-                            <span class="text-xs rounded-lg bg-zinc-100/80 px-2 py-1 font-semibold text-slate-600 dark:bg-zinc-900 dark:text-zinc-200">{post.modified_on}</span>
-                            <h3 class="postTitle text-xl mt-4 line-clamp-2 font-bold text-zinc-700 dark:text-zinc-200"><a href={"/blog/" + post.slug} title={post.title} class="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-br hover:from-blue-400 hover:to-blue-600 hover:transition-colors">{post.title}</a></h3>
+                        <a href={"/blog/" + post.slug} title={post.title} class="self-center h-48 relative "><img src={urlAPIHome + post.image} alt="Imagen de portada" class="h-46 absolute h-full w-full object-cover object-left hover:object-center transition-all rounded-lg"></a>
+                        <div class="self-end my-3">
+                            <span class="text-xs rounded-lg bg-zinc-100/80 px-2 py-1 font-semibold text-slate-600 dark:bg-zinc-800 dark:text-zinc-300">{post.modified_on}</span>
+                            <h3 class="postTitle text-xl mt-4 line-clamp-2 font-bold text-zinc-700 dark:text-zinc-200 leading-[2rem]"><a href={"/blog/" + post.slug} title={post.title} class="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-br hover:from-blue-400 hover:to-blue-600 hover:transition-colors">{post.title}</a></h3>
                             <p class="line-clamp-3 text-zinc-600 text-sm mt-2 dark:text-zinc-500">{post.summary}</p>
                         </div>
                     </li>

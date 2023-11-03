@@ -39,12 +39,8 @@ const categories = await request.json();
             </ul>
         </div>
         <div class="flex items-center w-[350px] space-x-5 mdl:hidden justify-end">
-            <div class="flex items-center mr-5">
-                <span id="themeMessage" class="dark:text-slate-50 font-bold mr-2 text-slate-600">Light</span>
-                <BtnChangeTheme client:only="preact" />
-            </div>
             <SearchInput client:only="preact" />
-            <div class="dropdown dropdown-end">
+            <div class="dropdown dropdown-end flex items-center">
                 <label tabindex="0" class="btn-circle avatar">
                     <button title="Perfil" class="w-7 rounded-full">
                         <User />
@@ -61,6 +57,7 @@ const categories = await request.json();
                     <li><a class="dark:hover:bg-zinc-800 dark:hover:text-zinc-200">Logout</a></li>
                 </ul>
             </div>
+            <BtnChangeTheme client:only="preact" />
         </div>
     </nav>
 </header>
