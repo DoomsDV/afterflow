@@ -19,9 +19,9 @@ if (entry) {
 } else {
     headings = [{text: 'Page not found'}]
     Content = page_404
+    return Astro.redirect("/404")
 }
 ---
-
 <BlogLayout title={headings[0].text}>
     <main class="w-[70%] md:w-[90%] mx-auto mt-16">
         <BreadCrumbs text={headings[0].text} />
