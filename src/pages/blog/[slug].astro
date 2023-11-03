@@ -1,5 +1,5 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import BlogLayout from "../../layouts/BlogLayout.astro";
 
 export const prerender = false;
 import { getEntry } from "astro:content";
@@ -20,6 +20,6 @@ if (entry) {
 }
 ---
 
-<Layout title={headings[0].text}>
+<BlogLayout title={headings[0].text}>
     <Content />
-</Layout>
+</BlogLayout>

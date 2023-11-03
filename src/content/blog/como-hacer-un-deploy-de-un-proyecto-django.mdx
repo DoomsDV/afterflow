@@ -1,0 +1,27 @@
+---
+    title: "¿Cómo hacer un deploy en django?}"
+---
+
+# Cómo hacer un deploy de un proyecto de Django
+
+Django es un framework de desarrollo web basado en Python que ofrece una serie de ventajas para crear aplicaciones web robustas, escalables y seguras. Sin embargo, para que una aplicación web sea accesible desde Internet, es necesario hacer un deploy, es decir, subir el código a un servidor y configurar los servicios necesarios para que funcione correctamente.
+
+En este artículo, vamos a explicar los pasos básicos para hacer un deploy de un proyecto de django usando el servicio de hosting gratuito de Heroku. Heroku es una plataforma que permite alojar aplicaciones web de forma sencilla y rápida, sin necesidad de tener conocimientos avanzados de administración de sistemas.
+
+## Requisitos previos
+
+Para seguir este tutorial, necesitamos tener instalado lo siguiente:
+
+- Python 3.6 o superior
+- Pipenv, un gestor de entornos virtuales y dependencias para Python
+- Git, un sistema de control de versiones
+- Heroku CLI, una herramienta de línea de comandos para interactuar con Heroku
+- Un editor de código de nuestra preferencia
+
+Además, debemos tener una cuenta en Heroku y crear una nueva aplicación desde el panel de control.
+
+## Crear el proyecto de django
+
+Lo primero que vamos a hacer es crear un nuevo proyecto de django usando el comando `django-admin startproject`. Este comando nos creará una carpeta con el nombre que le indiquemos, que contendrá los archivos básicos para iniciar una aplicación web con django. En nuestro caso, vamos a llamar al proyecto `blog`:
+
+Luego, entramos en la carpeta del proyecto y creamos un entorno virtual con Pipenv:
