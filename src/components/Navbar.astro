@@ -5,7 +5,6 @@ import User from "../components/icons/User-cog.astro";
 import BtnChangeTheme from "../components/jsx/ButtonChangeTheme";
 
 import {urlAPI} from "../static/ts/vars";
-import "../static/css/index.css";
 
 const request = await fetch(urlAPI + "/categories/");
 const categories = await request.json();
