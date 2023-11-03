@@ -13,11 +13,11 @@ const categories = await request.json();
 <header class="sticky top-0 z-50">
     <nav class="flex items-center px-4 py-3 bg-white dark:bg-[#141414] justify-between">
         <div class="flex items-center space-x-8">
-            <a href="/" title="Inicio" class="inline-block">
+            <a href="/" title="Inicio" class="inline-block" aria-label="Página de inicio">
                 <img src="/logo/afterflow.png" width="60" height="60" alt="Logo de Afterflow">
             </a>
             <ul class="flex items-center space-x-5 text-zinc-600 text-sm dark:text-zinc-200">
-                <li><a href="/" title="Inicio">Inicio</a></li>
+                <li><a href="/" title="Inicio" aria-label="Página de inicio">Inicio</a></li>
                 <li class="dropdown">
                     <button tabindex="0" title="Categorías" class="cursor-pointer flex items-center">Categorías
                         <Chevron />
@@ -27,22 +27,21 @@ const categories = await request.json();
                             categories.map((category:any) => {
                                 return (
                                     <li>
-                                        <a href={"/categoria/" + category.slug} title={category.name} class="dark:hover:bg-zinc-800 dark:hover:text-zinc-200">{category.name}</a>
+                                        <a href={"/categoria/" + category.slug} aria-label={`Categoría ${category.name}`} title={category.name} class="dark:hover:bg-zinc-800 dark:hover:text-zinc-200">{category.name}</a>
                                     </li>
                                 )
                             })
                         }
                     </ul>
                 </li>
-                <li><a href="/" title="Contacto">Contacto</a></li>
-                <li><a href="/" title="Servicios">Servicios</a></li>
+                <li><a href="https://wa.me/986541799" title="Contacto" aria-label="Contacto por WhastsApp">Contacto</a></li>
             </ul>
         </div>
         <div class="flex items-center w-[350px] space-x-5 mdl:hidden justify-end">
             <SearchInput client:only="preact" />
             <div class="dropdown dropdown-end flex items-center">
-                <label tabindex="0" class="btn-circle avatar">
-                    <button title="Perfil" class="w-7 rounded-full">
+                <label tabindex="0" class="btn-circle avatar" aria-label="Menú del perfil">
+                    <button title="Perfil" class="w-7 rounded-full" aria-label="Bóton de mostrar perfil">
                         <User />
                     </button>
                 </label>
