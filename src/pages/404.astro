@@ -3,5 +3,10 @@ import Layout404 from "../layouts/Layout404.astro";
 ---
 
 <Layout404 title="Page not found. :(">
-    <img src="/images/page-404.png" alt="Imagen de error 404." class="m-auto">
+    <div class="text-center h-[100vh] grid grid-cols-1 content-center bg-gradient-to-tr 
+    from-purple-900 to-slate-800 text-white">
+        <h1 class="text-[9rem] font-extrabold font-mono leading-none bsm:text-[8rem]">404</h1>
+        <p class="text-4xl font-semibold font-mono bsm:text-2xl">OOPS!</p>
+        <p class="text-4xl font-semibold mt-5 font-mono bsm:text-2xl">La página que buscas no existe😕</p>
+    </div>
 </Layout404>
