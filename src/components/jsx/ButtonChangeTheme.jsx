@@ -1,6 +1,6 @@
 import {useRef, useEffect} from "preact/hooks"
 
-export default function BtnChangeTheme(event) {
+export default function BtnChangeTheme() {
     const inputRef = useRef();
 
     useEffect(() => {
