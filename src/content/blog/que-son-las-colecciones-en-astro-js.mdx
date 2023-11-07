@@ -1,0 +1,26 @@
+---
+    title: "¿Qué son las colecciones en Astro JS?"
+    createdOn: "07 de noviembre del 2023"
+    image: "https://res.cloudinary.com/dywvpo1ml/image/upload/v1/media/blog/portadas/post-1_cx7z0k"
+---
+
+<span id="date">Publicado el {frontmatter.createdOn}</span>
+# ¿Qué son las colecciones en Astro JS?
+<img src={frontmatter.image} class="h-96 mx-auto object-cover object-center" />
+
+<hr class="my-12" />
+
+# Qué son las colecciones en Astro JS
+
+Astro JS es un framework de desarrollo web que permite crear sitios web estáticos con componentes dinámicos. Una de las características más interesantes de Astro JS es el uso de las colecciones, que son conjuntos de datos que se pueden renderizar en el navegador o en el servidor.
+
+Las colecciones son una forma de organizar y mostrar los datos de tu sitio web, como por ejemplo, una lista de artículos, productos, eventos, etc. Las colecciones se definen en un archivo `.astro` con la sintaxis `export let collection = {...}`. Dentro del objeto `collection` se pueden especificar diferentes propiedades, como:
+
+- `route`: la ruta donde se va a generar la página de la colección, por ejemplo `/blog/$slug.astro`.
+- `paths`: una función que devuelve un array de objetos con los parámetros de cada página de la colección, por ejemplo `{slug: "mi-primer-post"}`.
+- `props`: una función que recibe los parámetros de cada página y devuelve un objeto con las propiedades que se van a pasar al componente Astro, por ejemplo `{post: data.posts.find(p => p.slug === params.slug)}`.
+- `data`: una función que devuelve los datos que se van a usar para crear la colección, por ejemplo `fetch("https://api.example.com/posts")`.
+
+Con las colecciones se puede crear páginas dinámicas que se adaptan a los datos que se quieren mostrar. Por ejemplo, se puede crear una página de blog que liste todos los posts y que tenga una página individual para cada post. También se puede crear una página de productos que muestre los detalles de cada producto y que tenga un sistema de filtrado y paginación.
+
+Las colecciones son una herramienta muy potente para crear sitios web estáticos con contenido dinámico, aprovechando las ventajas de Astro JS, como el rendimiento, la optimización y la interoperabilidad con otros frameworks y librerías.
