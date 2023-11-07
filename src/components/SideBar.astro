@@ -46,6 +46,12 @@ const categories = await request.json();
         z-index: 200;
         padding: 1.3rem;
     }
+    html[class="dark"] #sideBar {
+        background-color: #141414;
+    }
+    html[class="dark"] * {
+        color: rgb(228 228 231);
+    }
 </style>
 <script>
    let bloqueo = document.getElementById("bloqueo") as HTMLDivElement;
