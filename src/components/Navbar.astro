@@ -15,7 +15,7 @@ const categories = await request.json();
             <a href="/" title="Inicio" class="inline-block" aria-label="Página de inicio">
                 <img src="/logo/afterflow.png" width="60" height="60" alt="Logo de Afterflow">
             </a>
-            <ul class="flex items-center space-x-5 text-zinc-600 text-sm dark:text-zinc-200">
+            <ul class="flex items-center space-x-5 text-zinc-600 text-sm dark:text-zinc-200 mdl:hidden">
                 <li><a href="/" title="Inicio" aria-label="Página de inicio">Inicio</a></li>
                 <li class="dropdown">
                     <button tabindex="0" title="Categorías" class="cursor-pointer flex items-center">Categorías
@@ -36,7 +36,7 @@ const categories = await request.json();
                 <li><a href="https://wa.me/986541799" title="Contacto" aria-label="Contacto por WhastsApp">Contacto</a></li>
             </ul>
         </div>
-        <div class="flex items-center w-[350px] gap-x-5 mdl:hidden justify-end">
+        <div class="flex items-center w-[350px] gap-x-5 bsm:hidden justify-end">
             <SearchInput client:only="preact" />
             <!-- <div class="dropdown dropdown-end flex items-center">
                 <label tabindex="0" class="btn-circle avatar" aria-label="Menú del perfil">
