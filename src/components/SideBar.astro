@@ -1,5 +1,6 @@
 ---
 import { urlAPI } from "../static/ts/vars";
+import SearchInput from "../components/jsx/SearchInput";
 
 const request = await fetch(urlAPI + "/categories/");
 const categories = await request.json();
@@ -10,9 +11,12 @@ const categories = await request.json();
         <li><a href="/" title="Inicio"><img src="/logo/afterflow.png" alt="Logo de Minder" class="w-10"></a></li>
     </ul>
     <div class="h-full w-full px-3 py-4 overflow-y-auto">
-        <ul class="space-y-3 font-medium">
+        <ul class="space-y-3">
             <li>
-                <button id="btnShowCategories" title="Categorías" class="font-medium text-gray-800 flex w-full justify-between">
+                <SearchInput parent={"sideBar"} />
+            </li>
+            <li>
+                <button id="btnShowCategories" title="Categorías" class="text-gray-800 flex w-full justify-between">
                 Categorías
                 <svg class="icon icon-tabler icon-tabler-chevron-down inline-block" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>

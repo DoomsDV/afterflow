@@ -1,6 +1,6 @@
 import { urlAPI } from "../../static/ts/vars";
 
-export default function SearchInput() {
+export default function SearchInput({parent}) {
     let inputText = '';
     let listWords = [];
     async function getPosts(e) {
@@ -40,15 +40,29 @@ export default function SearchInput() {
         postsPanel.classList.add('hidden')
         listWords = [];
     }
-    return (
-        <>
-            <div className={"relative flex items-center"}>
-                <form class="w-full" title="Buscar artículos" aria-label="Buscar artículos">
-                    <label for="search" class="hidden">Buscar artículo</label>
-                    <input onFocus={getPosts} onBlur={removePostPanel} onInput={getPosts} type="text" placeholder="Buscar artículos" id="search" class="bg-zinc-100/80 text-sm mb-1 outline-none px-3 py-2 dark:bg-zinc-800 rounded-xl dark:text-zinc-300" />
-                </form>
-                <div id={"posts"} className={"hidden rounded-lg shadow px-3 py-2 w-80 max-h-[200px] absolute right-[-2rem] overflow-y-auto bg-white top-[100%] dark:bg-[#161616] dark:text-zinc-300"}></div>
-            </div>
-        </>
-    )
+    if (parent === 'navbar') {
+        return (
+            <>
+                <div className={"relative flex items-center mdl:hidden"}>
+                    <form class="w-full" title="Buscar artículos" aria-label="Buscar artículos">
+                        <label for="search" class="hidden">Buscar artículo</label>
+                        <input onFocus={getPosts} onBlur={removePostPanel} onInput={getPosts} type="text" placeholder="Buscar artículos" id="search" class="bg-zinc-100/80 text-sm mb-1 outline-none px-3 py-2 dark:bg-zinc-800 rounded-xl dark:text-zinc-300" />
+                    </form>
+                    <div id={"posts"} className={"hidden rounded-lg shadow px-3 py-2 w-80 max-h-[200px] absolute right-[-2rem] overflow-y-auto bg-white top-[100%] dark:bg-[#161616] dark:text-zinc-300"}></div>
+                </div>
+            </>
+        )
+    } else {
+        return (
+            <>
+                <div className={"relative flex items-center w-full"}>
+                    <form class="w-full" title="Buscar artículos" aria-label="Buscar artículos">
+                        <label for="search" class="hidden">Buscar artículo</label>
+                        <input onFocus={getPosts} onBlur={removePostPanel} onInput={getPosts} type="text" placeholder="Buscar artículos" id="search" class="bg-zinc-100/80 text-sm mb-1 outline-none px-3 py-2 dark:bg-zinc-800 rounded-xl w-full dark:text-zinc-300" />
+                    </form>
+                    <div id={"posts"} className={"hidden rounded-lg shadow px-3 py-2 w-80 max-h-[200px] absolute right-[-2rem] overflow-y-auto bg-white top-[100%] dark:bg-[#161616] dark:text-zinc-300"}></div>
+                </div>
+            </>
+        )
+    }
 }

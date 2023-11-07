@@ -37,7 +37,7 @@ const categories = await request.json();
             </ul>
         </div>
         <div class="flex items-center w-[350px] gap-x-5 justify-end">
-            <SearchInput client:only="preact" />
+            <SearchInput parent={"navbar"} client:only="preact" />
             <BtnChangeTheme client:only="preact" />
             <ButtonShowSideBar client:only="preact" />
         </div>
