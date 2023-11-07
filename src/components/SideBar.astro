@@ -1,0 +1,67 @@
+---
+import { urlAPI } from "../static/ts/vars";
+
+const request = await fetch(urlAPI + "/categories/");
+const categories = await request.json();
+---
+<div id="bloqueo" class="w-full h-full fixed top-0 z-[100] md:visible invisible bg-black/30 hidden"></div>
+<aside class="sideBar md:visible invisible" id="sideBar">
+    <ul class="flex items-center justify-between">
+        <li><a href="/" title="Inicio"><img src="/logo/afterflow.png" alt="Logo de Minder" class="w-10"></a></li>
+    </ul>
+    <div class="h-full w-full px-3 py-4 overflow-y-auto">
+        <ul class="space-y-3 font-medium">
+            <li>
+                <button id="btnShowCategories" title="Categorías" class="font-medium text-gray-800 flex w-full justify-between">
+                Categorías
+                <svg class="icon icon-tabler icon-tabler-chevron-down inline-block" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 9l6 6l6 -6"></path>
+                </svg>
+                </button>
+                <ul id="categories" class="py-1 h-0 pl-5 overflow-hidden space-y-5 mt-3 text-gray-700">
+                    {
+                        categories.map((category:any) => {
+                            return <li><a href={"/categoria/" + category.slug} title={category.name}>{category.name}</a></li>
+                        })
+                    }
+                </ul>
+            </li>
+        </ul>
+     </div>
+</aside>
+<style>
+    #sideBar {
+        position: fixed;
+        width: 20rem;
+        height: 100%;
+        background-color: rgb(250, 250, 250);
+        top: 0;
+        right: -20rem;
+        transition: right 0.3s ease-in-out;
+        z-index: 200;
+        padding: 1.3rem;
+    }
+</style>
+<script>
+   let bloqueo = document.getElementById("bloqueo") as HTMLDivElement;
+   let sideBar = document.getElementById("sideBar") as HTMLElement;
+   
+   let btnShowCategories = document.getElementById("btnShowCategories") as HTMLButtonElement;
+   let categories = document.getElementById("categories") as HTMLUListElement;
+
+    btnShowCategories.addEventListener('click', e => {
+        if (categories.classList.toString().includes('h-0')) {
+            categories.classList.replace('h-0', 'h-auto');
+        } else {
+            categories.classList.replace('h-auto', 'h-0');
+        }
+        e.preventDefault();
+    })
+
+    bloqueo.addEventListener("click", (e) => {
+        bloqueo.classList.replace("block", "hidden");
+        sideBar.style.right = "-20rem";
+        e.preventDefault();
+    })
+</script>
