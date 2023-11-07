@@ -37,9 +37,9 @@ const categories = await request.json();
                 <li><a href="https://wa.me/986541799" title="Contacto" aria-label="Contacto por WhastsApp">Contacto</a></li>
             </ul>
         </div>
-        <div class="flex items-center w-[350px] space-x-5 mdl:hidden justify-end">
+        <div class="flex items-center w-[350px] gap-x-5 mdl:hidden justify-end">
             <SearchInput client:only="preact" />
-            <div class="dropdown dropdown-end flex items-center">
+            <!-- <div class="dropdown dropdown-end flex items-center">
                 <label tabindex="0" class="btn-circle avatar" aria-label="Menú del perfil">
                     <button title="Perfil" class="w-7 rounded-full" aria-label="Bóton de mostrar perfil">
                         <User />
@@ -55,7 +55,7 @@ const categories = await request.json();
                     <li><a class="dark:hover:bg-zinc-800 dark:hover:text-zinc-200">Settings</a></li>
                     <li><a class="dark:hover:bg-zinc-800 dark:hover:text-zinc-200">Logout</a></li>
                 </ul>
-            </div>
+            </div> -->
             <BtnChangeTheme client:only="preact" />
         </div>
     </nav>

@@ -1,2 +1,2 @@
-export const urlAPI = "http://127.0.0.1:8000/api"
-export const urlAPIHome = "http://127.0.0.1:8000"
+export const urlAPI = "https://afterflow-api.onrender.com/api"
+export const urlAPIHome = "https://afterflow-api.onrender.com"

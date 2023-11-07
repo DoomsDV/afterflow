@@ -11,6 +11,8 @@ const posts = await request.json();
     <main class="md:px-20 bsm:px-10 xr:px-5 px-[5.5rem]">
         <LatestPost />
         <div class="h-[1px] w-full bg-zinc-100 dark:bg-zinc-700 mt-20"></div>
-        <RecentArticles posts={posts} />
+        {
+            posts.length > 0 ? <RecentArticles posts={posts} /> : ''
+        }
     </main> 
 </Layout>
