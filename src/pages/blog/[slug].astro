@@ -1,6 +1,5 @@
 ---
 import BlogLayout from "../../layouts/BlogLayout.astro";
-import BreadCrumbs from "../../components/BreadCrumbs.astro";
 import "../../static/css/index.css";
 
 export const prerender = false;
@@ -24,7 +23,6 @@ if (entry) {
 ---
 <BlogLayout title={headings[0].text}>
     <main class="w-[70%] md:w-[90%] mx-auto mt-16">
-        <!-- <BreadCrumbs text={headings[0].text} /> -->
         <article>
             <Content />
         </article>
