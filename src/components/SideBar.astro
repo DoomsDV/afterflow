@@ -16,12 +16,12 @@ const categories = await request.json();
                 <SearchInput parent={"sideBar"} />
             </li>
             <li>
-                <button id="btnShowCategories" title="Categorías" class="text-gray-800 flex w-full justify-between">
-                Categorías
-                <svg class="icon icon-tabler icon-tabler-chevron-down inline-block" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M6 9l6 6l6 -6"></path>
-                </svg>
+                <button id="btnShowCategories" title="Categorías" class="text-gray-800 flex w-full justify-between mt-5">
+                    Categorías
+                    <svg class="icon icon-tabler icon-tabler-chevron-down inline-block" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M6 9l6 6l6 -6"></path>
+                    </svg>
                 </button>
                 <ul id="categories" class="py-1 h-0 pl-5 overflow-hidden space-y-5 mt-3 text-gray-700">
                     {
