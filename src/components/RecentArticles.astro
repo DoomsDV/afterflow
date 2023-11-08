@@ -18,11 +18,12 @@ const postsLength = posts.length
 <section class="text-center mt-12">
     <h2 class="text-4xl font-extrabold text-slate-600 dark:text-zinc-300">Artículos recientes</h2>
     <p class="text-slate-600 my-6 dark:text-zinc-500">Te invitamos a leer nuestros artículos recientes, donde encontrarás consejos, noticias, opiniones y análisis de expertos. Puedes explorar nuestras publicaciones recientes a continuación:</p>
-    <ul class="grid grid-cols-3 items-stretch justify-around gap-10 lg:grid-cols-2 mdl:grid-cols-1">
+    <ul class="mb-10" class:list={[postsLength > 2 ? "grid grid-cols-3 items-stretch justify-around gap-10 lg:grid-cols-2 mdl:grid-cols-1" : "flex items-stretch justify-around mdl:flex-wrap gap-10"]}>
         {
             posts.map((post:any) => {
                 return (
                     <li class="bg-zinc-50/80 border-[1px] p-6 rounded-lg grid grid-cols-1 dark:bg-[#141414] dark:border-none dark:shadow-xl" class:list={[
+                        postsLength < 3 ? "w-1/2 gap-8 rounded-lg border-[1px] blg:w-full" : "",
                         postsLength > 3 && postsLength % 3 != 0 ? 'last:col-span-2 mdl:last:col-span-1' : '', 
                         postsLength % 2 === 0 ? 'lg:last:col-span-1' : ''
                     ]}>

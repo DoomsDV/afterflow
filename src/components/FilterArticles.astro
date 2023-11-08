@@ -35,7 +35,7 @@ const postsLength = posts.length
                         postsLength < 3 ? "w-1/2 gap-8 rounded-lg border-[1px] blg:w-full" : "", 
                         postsLength > 3 && postsLength % 3 != 0 ? 'last:col-span-2 mdl:last:col-span-1' : '', 
                         postsLength % 2 === 0 ? 'lg:last:col-span-1' : '']}>
-                        <a href={"/blog/" + post.slug} title={post.title} class="self-center h-48 relative "><img src={urlAPIHome + post.image} alt="Imagen de portada" class="h-46 absolute h-full w-full object-cover object-left hover:object-center transition-all rounded-lg"></a>
+                        <a href={"/blog/" + post.slug} title={post.title} class="self-center h-48 relative "><img src={post.image} alt="Imagen de portada" class="h-46 absolute h-full w-full object-cover object-left hover:object-center transition-all rounded-lg"></a>
                         <div class="self-end my-3">
                             <span class="text-xs rounded-lg bg-zinc-100/80 px-2 py-1 font-semibold text-slate-600 dark:bg-zinc-800 dark:text-zinc-300">{post.modified_on}</span>
                             <h3 class="postTitle text-xl mt-4 line-clamp-2 font-bold text-zinc-700 dark:text-zinc-200 leading-[2rem]"><a href={"/blog/" + post.slug} title={post.title} class="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-br hover:from-blue-400 hover:to-blue-600 hover:transition-colors">{post.title}</a></h3>
