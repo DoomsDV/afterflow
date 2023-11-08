@@ -1,8 +1,9 @@
 ---
 import SearchInput from "../components/jsx/SearchInput";
-import {ButtonShowMenuCategories} from "../components/jsx/ButtonsSidePanel"
+import {ButtonShowMenuCategories, BlockDiv} from "../components/jsx/ButtonsSidePanel"
 ---
-<div id="bloqueo" class="w-full h-full fixed top-0 z-[100] md:visible invisible bg-black/30 hidden"></div>
+<BlockDiv client:load />
+
 <aside class="sideBar md:visible invisible" id="sideBar">
     <ul class="flex items-center justify-between">
         <li><a href="/" title="Inicio"><img src="/logo/afterflow.png" alt="Logo de Minder" class="w-10"></a></li>
@@ -41,11 +42,3 @@ import {ButtonShowMenuCategories} from "../components/jsx/ButtonsSidePanel"
         color: rgb(228 228 231);
     }
 </style>
-<script is:inline>
-   let bloqueo = document.getElementById("bloqueo");
-    bloqueo.addEventListener("click", (e) => {
-        bloqueo.classList.replace("block", "hidden");
-        sideBar.style.right = "-20rem";
-        e.preventDefault();
-    })
-</script>

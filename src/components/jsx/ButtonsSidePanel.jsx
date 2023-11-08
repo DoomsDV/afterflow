@@ -22,3 +22,15 @@ export function ButtonShowMenuCategories({parent}) {
         </ul>
     )
 }
+
+export function BlockDiv() {
+    function hideSideBar(event) {
+        let sideBar = document.getElementById('sideBar');
+        sideBar.style.right = '-20rem';
+        event.target.classList.replace('block', 'hidden');
+    }
+
+    return (
+        <div id="bloqueo" onClick={hideSideBar} class="w-full h-full fixed top-0 z-[100] md:visible invisible bg-black/30 hidden"></div>
+    )
+}
