@@ -17,7 +17,7 @@ Existen dos formas de incluir automáticamente las transiciones de vista:
 
 Si necesitas agregar transiciones de vista a una sola página o entre páginas específicas, puedes renderizar `ViewTransitions` en el `<head>` de las páginas específicas. Aquí tienes un ejemplo de cómo hacerlo:
 
-```markdown
+```typescript
 // some-page.astro
 ---
 import { ViewTransitions } from "astro:transitions";
@@ -40,7 +40,7 @@ Astro te permite personalizar las transiciones de vista para adaptarlas a tus ne
 
 Puedes darle un nombre a una transición para que sea más fácil de identificar. Esto es útil cuando tienes varias transiciones y quieres poder referenciarlas fácilmente.
 
-```markdown
+```typescript
 <ViewTransitions name="miTransicion" />
 ```
 
@@ -48,7 +48,7 @@ Puedes darle un nombre a una transición para que sea más fácil de identificar
 
 Astro te permite mantener el estado de tus componentes durante las transiciones. Esto significa que puedes navegar entre páginas sin perder el estado de tus componentes.
 
-```markdown
+```typescript
 <ViewTransitions keepAlive />
 ```
 
@@ -56,7 +56,7 @@ Astro te permite mantener el estado de tus componentes durante las transiciones.
 
 También puedes controlar el enrutador de Astro durante las transiciones. Esto te permite, por ejemplo, prevenir la navegación del lado del cliente o desencadenar la navegación.
 
-```markdown
+```typescript
 <ViewTransitions routerControl />
 ```
 
@@ -64,6 +64,6 @@ También puedes controlar el enrutador de Astro durante las transiciones. Esto t
 
 Finalmente, puedes usar las transiciones de vista para reemplazar entradas en el historial del navegador. Esto puede ser útil si quieres que el usuario pueda volver a una página específica después de una transición.
 
-```markdown
+```typescript
 <ViewTransitions replace />
 ```
