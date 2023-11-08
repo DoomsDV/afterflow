@@ -1,35 +1,23 @@
 ---
-import { urlAPI } from "../static/ts/vars";
 import SearchInput from "../components/jsx/SearchInput";
-
-const request = await fetch(urlAPI + "/categories/");
-const categories = await request.json();
+import {ButtonShowMenuCategories} from "../components/jsx/ButtonsSidePanel"
 ---
 <div id="bloqueo" class="w-full h-full fixed top-0 z-[100] md:visible invisible bg-black/30 hidden"></div>
 <aside class="sideBar md:visible invisible" id="sideBar">
     <ul class="flex items-center justify-between">
         <li><a href="/" title="Inicio"><img src="/logo/afterflow.png" alt="Logo de Minder" class="w-10"></a></li>
     </ul>
-    <div class="h-full w-full px-3 py-4 overflow-y-auto">
-        <ul class="space-y-3">
+    <div class="h-full w-full px-3 py-4 ">
+        <ul class="space-y-10">
             <li>
                 <SearchInput parent={"sideBar"} />
             </li>
             <li>
-                <button id="btnShowCategories" title="Categorías" class="text-gray-800 flex w-full justify-between mt-5">
-                    Categorías
-                    <svg class="icon icon-tabler icon-tabler-chevron-down inline-block" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                        <path d="M6 9l6 6l6 -6"></path>
-                    </svg>
-                </button>
-                <ul id="categories" class="py-1 h-0 pl-5 overflow-hidden space-y-5 mt-3 text-gray-700">
-                    {
-                        categories.map((category:any) => {
-                            return <li><a href={"/categoria/" + category.slug} title={category.name}>{category.name}</a></li>
-                        })
-                    }
-                </ul>
+                <h3 class={"text-lg font-medium"}>Categorías</h3>
+                <ButtonShowMenuCategories parent={"sideBar"} client:only="react" />
+            </li>
+            <li>
+                <a href="https://wa.me/986541799" class="text-lg font-medium mt-5">Contacto</a>
             </li>
         </ul>
      </div>
@@ -53,22 +41,8 @@ const categories = await request.json();
         color: rgb(228 228 231);
     }
 </style>
-<script>
-   let bloqueo = document.getElementById("bloqueo") as HTMLDivElement;
-   let sideBar = document.getElementById("sideBar") as HTMLElement;
-   
-   let btnShowCategories = document.getElementById("btnShowCategories") as HTMLButtonElement;
-   let categories = document.getElementById("categories") as HTMLUListElement;
-
-    btnShowCategories.addEventListener('click', e => {
-        if (categories.classList.toString().includes('h-0')) {
-            categories.classList.replace('h-0', 'h-auto');
-        } else {
-            categories.classList.replace('h-auto', 'h-0');
-        }
-        e.preventDefault();
-    })
-
+<script is:inline>
+   let bloqueo = document.getElementById("bloqueo");
     bloqueo.addEventListener("click", (e) => {
         bloqueo.classList.replace("block", "hidden");
         sideBar.style.right = "-20rem";
