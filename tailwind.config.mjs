@@ -22,7 +22,10 @@ export default {
 	},
 	plugins: [require("daisyui")],
 	daisyui: {
-		themes: ["light"]
+		themes: ["light"],
+		base: false,
+		styled: false,
+		logs: false,
 	},
 	darkMode: 'class',
 }

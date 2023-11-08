@@ -1,0 +1,72 @@
+---
+    title: "¿Qué son las ViewTransitions en Astro JS?"
+    createdOn: "08 de noviembre del 2023"
+    image: "https://res.cloudinary.com/dywvpo1ml/image/upload/v1/media/blog/portadas/view-transitions_xr54gm"
+---
+
+<span id="date">Publicado el {frontmatter.createdOn}</span>
+# {frontmatter.title}
+<img src={frontmatter.image} class="h-96 mx-auto object-cover object-center" />
+<hr class="my-12" />
+Claro, aquí está la información en formato Markdown sin renderizar:
+
+Las ViewTransitions en Astro JS son una característica que permite actualizar el contenido de tu página sin el refresco de navegación completa del navegador y proporciona animaciones fluidas entre las páginas. Astro proporciona un componente de enrutamiento `<ViewTransitions />` que se puede agregar al `<head>` de una sola página para controlar las transiciones de página mientras navegas hacia otra página.
+
+## Agregando ViewTransitions a una Página
+
+Existen dos formas de incluir automáticamente las transiciones de vista:
+
+### Opción 1: Transiciones de vista de página única
+
+Si necesitas agregar transiciones de vista a una sola página o entre páginas específicas, puedes renderizar `ViewTransitions` en el `<head>` de las páginas específicas. Aquí tienes un ejemplo de cómo hacerlo:
+
+```markdown
+// some-page.astro
+---
+import { ViewTransitions } from "astro:transitions";
+---
+<head>
+  <ViewTransitions />
+</head>
+// ...
+```
+
+### Opción 2: Transiciones de vista de todo el sitio
+
+Para las transiciones de vista de todo el sitio, puedes seguir un proceso similar al de la opción 1, pero en lugar de agregar el componente `ViewTransitions` a una sola página, lo agregarías a un componente de diseño que se utiliza en todas las páginas.
+
+## Personalizando las Transiciones de Vista de Astro
+
+Astro te permite personalizar las transiciones de vista para adaptarlas a tus necesidades. Puedes nombrar una transición, mantener el estado durante las transiciones, controlar el enrutador, prevenir la navegación del lado del cliente, desencadenar la navegación, reemplazar entradas en el historial del navegador, y más.
+
+### Nombres de Transición
+
+Puedes darle un nombre a una transición para que sea más fácil de identificar. Esto es útil cuando tienes varias transiciones y quieres poder referenciarlas fácilmente.
+
+```markdown
+<ViewTransitions name="miTransicion" />
+```
+
+### Mantener el Estado Durante las Transiciones
+
+Astro te permite mantener el estado de tus componentes durante las transiciones. Esto significa que puedes navegar entre páginas sin perder el estado de tus componentes.
+
+```markdown
+<ViewTransitions keepAlive />
+```
+
+### Controlar el Enrutador
+
+También puedes controlar el enrutador de Astro durante las transiciones. Esto te permite, por ejemplo, prevenir la navegación del lado del cliente o desencadenar la navegación.
+
+```markdown
+<ViewTransitions routerControl />
+```
+
+### Reemplazar Entradas en el Historial del Navegador
+
+Finalmente, puedes usar las transiciones de vista para reemplazar entradas en el historial del navegador. Esto puede ser útil si quieres que el usuario pueda volver a una página específica después de una transición.
+
+```markdown
+<ViewTransitions replace />
+```
