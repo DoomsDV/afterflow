@@ -29,7 +29,7 @@ const postsLength = posts.length
         {
             posts.map((post:any) => {
                 return (
-                    <li class="rounded-lg border-[1px] p-6 grid grid-cols-1 dark:bg-[#141414] dark:border-none dark:shadow-xl" class:list={[
+                    <li class="rounded-lg border-[1px] border-slate-100 p-6 grid grid-cols-1 dark:bg-[#141414] dark:border-none dark:shadow-xl" class:list={[
                         postsLength < 3 ? "w-1/2 gap-8 rounded-lg border-[1px] blg:w-full" : "", 
                         postsLength > 3 && postsLength % 3 != 0 ? 'last:col-span-2 mdl:last:col-span-1' : '', 
                         postsLength % 2 === 0 ? 'lg:last:col-span-1' : '']}>
