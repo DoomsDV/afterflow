@@ -16,8 +16,8 @@ posts.map((post:any) => {
 const postsLength = posts.length
 ---
 <section class="text-center mt-12">
-    <h2 class="text-4xl font-extrabold text-slate-600 dark:text-zinc-300">Artículos recientes</h2>
-    <p class="text-slate-600 my-6 dark:text-zinc-500">Te invitamos a leer nuestros artículos recientes, donde encontrarás consejos, noticias, opiniones y análisis de expertos. Puedes explorar nuestras publicaciones recientes a continuación:</p>
+    <h2 class="text-4xl font-extrabold text-slate-600 dark:text-zinc-300 bsm:text-2xl">Artículos recientes</h2>
+    <p class="text-slate-600 my-6 dark:text-zinc-500 bsm:text-sm">Te invitamos a leer nuestros artículos recientes, donde encontrarás consejos, noticias, opiniones y análisis de expertos. Puedes explorar nuestras publicaciones recientes a continuación:</p>
     <ul class="mb-10" class:list={[postsLength > 2 ? "grid grid-cols-3 items-stretch justify-around gap-10 lg:grid-cols-2 mdl:grid-cols-1" : "flex items-stretch justify-around mdl:flex-wrap gap-10"]}>
         {
             posts.map((post:any) => {
