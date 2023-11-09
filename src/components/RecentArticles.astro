@@ -1,41 +1,36 @@
 ---
-interface Props {
-    posts: [{}]
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog')
+let recentPosts;
+
+if (allPosts) {
+    recentPosts = allPosts.slice(1, allPosts.length)
 }
-
-const {posts} = Astro.props;
-
-posts.map((post:any) => {
-    post.modified_on = new Date(parseInt(post.modified_on), 10).toLocaleDateString('es-PY',{
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    })
-})
-
-const postsLength = posts.length
+const postsLength = allPosts.length - 1;
 ---
 <section class="text-center mt-12">
     <h2 class="text-4xl font-extrabold text-slate-600 dark:text-zinc-300 bsm:text-2xl">Artículos recientes</h2>
     <p class="text-slate-600 my-6 dark:text-zinc-500 bsm:text-sm">Te invitamos a leer nuestros artículos recientes, donde encontrarás consejos, noticias, opiniones y análisis de expertos. Puedes explorar nuestras publicaciones recientes a continuación:</p>
-    <ul class="mb-10" class:list={[postsLength > 2 ? "grid grid-cols-3 items-stretch justify-around gap-10 lg:grid-cols-2 mdl:grid-cols-1" : "flex items-stretch justify-around mdl:flex-wrap gap-10"]}>
+    <ul class="mb-10 flex" class:list={[postsLength >= 3 ? "grid grid-cols-3 items-stretch justify-around gap-10 lg:grid-cols-2 mdl:grid-cols-1" : "items-stretch justify-around mdl:flex-wrap gap-10"]}>
         {
-            posts.map((post:any) => {
+            recentPosts ? recentPosts.map((post:any) => {
                 return (
-                    <li class="bg-zinc-50/80 border-[1px] border-slate-100 p-6 rounded-lg grid grid-cols-1 dark:bg-[#141414] dark:border-none dark:shadow-xl" class:list={[
-                        postsLength < 3 ? "w-1/2 gap-8 rounded-lg border-[1px] blg:w-full" : "",
-                        postsLength > 3 && postsLength % 3 != 0 ? 'last:col-span-2 mdl:last:col-span-1' : '', 
-                        postsLength % 2 === 0 ? 'lg:last:col-span-1' : ''
-                    ]}>
-                        <a href={"/blog/" + post.slug} title={post.title} class="self-center relative h-48 rounded-xl"><img src={post.image} alt="Imagen de portada" class="absolute h-full w-full object-cover object-left rounded-xl hover:object-center transition-all"></a>
+                    <li class="bg-zinc-50/80 border-[1px] border-slate-100 p-6 rounded-lg grid grid-cols-1 dark:bg-[#141414] dark:border-none dark:shadow-xl" 
+                        class:list={[
+                            postsLength < 3 ? "w-1/2 gap-8 rounded-lg border-[1px] blg:w-full" : "",
+                            postsLength > 3 && postsLength % 3 != 0 ? 'last:col-span-2 mdl:last:col-span-1' : '', 
+                            postsLength % 2 === 0 ? 'lg:last:col-span-1' : ''
+                        ]}>
+                        <a href={"/blog/" + post.data.slug} title={post.data.title} class="self-center relative h-48 rounded-xl"><img src={post.data.image} alt="Imagen de portada" class="absolute h-full w-full object-cover object-left rounded-xl hover:object-center transition-all"></a>
                         <div class="self-end my-3">
-                            <span class="text-xs rounded-lg bg-zinc-100/80 px-2 py-1 font-semibold text-slate-600 dark:bg-zinc-900 dark:text-zinc-200">{post.modified_on}</span>
-                            <h3 class="postTitle text-xl line-clamp-2 font-bold text-zinc-700 mt-5 dark:text-zinc-200 leading-[2rem]"><a href={"/blog/" + post.slug} title={post.title} class="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-br hover:from-blue-400 hover:to-blue-600 hover:transition-colors">{post.title}</a></h3>
+                            <span class="text-xs rounded-lg bg-zinc-100/80 px-2 py-1 font-semibold text-slate-600 dark:bg-zinc-900 dark:text-zinc-200">{post.data.createdOn}</span>
+                            <h3 class="postTitle text-xl line-clamp-2 font-bold text-zinc-700 mt-5 dark:text-zinc-200 leading-[2rem]"><a href={"/blog/" + post.data.slug} title={post.data.title} class="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-br hover:from-blue-400 hover:to-blue-600 hover:transition-colors">{post.data.title}</a></h3>
                             <p class="line-clamp-3 text-zinc-600 text-sm mt-2 dark:text-zinc-500">{post.summary}</p>
                         </div>
                     </li>
                 )
-            })
+            }) : ''
         }
     </ul>
 </section>
