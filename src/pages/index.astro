@@ -2,9 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 import LatestPost from '../components/LatestPost.astro';
 import RecentArticles from '../components/RecentArticles.astro';
-import { urlAPI } from '../static/ts/vars';
-const request = await fetch(urlAPI + `/posts/`);
-const posts = await request.json();
 
 let filter = 'como'
 let files = await Astro.glob('../content/blog/*');
@@ -18,7 +15,6 @@ function removeDiacritics(str:string) {
 }
 
 let results = data.filter(title => removeDiacritics(title).includes('que'))
-console.log(results);
 ---
 
 <Layout title="Afterflow - Inicio.">
@@ -26,7 +22,7 @@ console.log(results);
         <LatestPost />
         <div class="h-[1px] w-full bg-zinc-100 dark:bg-zinc-700 mt-20"></div>
         {
-            posts.length > 0 ? <RecentArticles posts={posts} /> : ''
+            files.length > 0 ? <RecentArticles /> : ''
         }
     </main> 
 </Layout>

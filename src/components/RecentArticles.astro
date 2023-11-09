@@ -1,11 +1,12 @@
 ---
 import { getCollection } from 'astro:content';
+import "../static/css/index.css";
 
-const allPosts = await getCollection('blog')
+const allPosts = await getCollection('blog');
 let recentPosts;
 
 if (allPosts) {
-    recentPosts = allPosts.slice(1, allPosts.length)
+    recentPosts = allPosts.slice(1, allPosts.length);
 }
 const postsLength = allPosts.length - 1;
 ---
