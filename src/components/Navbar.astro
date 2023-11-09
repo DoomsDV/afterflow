@@ -3,7 +3,9 @@ import SearchInput from "../components/jsx/SearchInput";
 import Chevron from "../components/icons/Chevron-down.astro";
 import BtnChangeTheme from "../components/jsx/ButtonChangeTheme";
 import {ButtonShowSideBar} from "./jsx/ButtonsSidePanel";
-import { ButtonShowMenuCategories } from "./jsx/ButtonsSidePanel";
+import { getCollection } from "astro:content";
+
+const allTags = await getCollection('tags');
 ---
 <header class="sticky top-0 z-50">
     <nav class="flex items-center px-4 py-3 bg-white dark:bg-[#141414] justify-between">
@@ -17,7 +19,11 @@ import { ButtonShowMenuCategories } from "./jsx/ButtonsSidePanel";
                         <Chevron />
                     </button>
                     <ul tabindex="0" class="dropdown-content menu p-3 bg-white shadow rounded-box w-52 mt-2 dark:bg-[#161616] dark:text-zinc-200">
-                        <ButtonShowMenuCategories parent={"navbar"} client:only="react"/>
+                        {
+                            allTags.map(tag => {
+                                return <li><a href={"/categoria/" + tag.data.slug} title={tag.data.name} aria-label={"Categoría " + tag.data.name} class={"block dark:hover:bg-zinc-800 dark:hover:text-zinc-200 p-2 rounded-lg hover:bg-zinc-100"}>{tag.data.name}</a></li>
+                            })
+                        }
                     </ul>
                 </li>
                 <li><a href="https://wa.me/986541799" title="Contacto" aria-label="Contacto por WhastsApp">Contacto</a></li>

@@ -15,14 +15,6 @@ export function ButtonShowSideBar() {
     )
 }
 
-export function ButtonShowMenuCategories({parent}) {
-    return (
-        <ul class="text-gray-700" className={parent === 'sideBar' ? "pl-6 mt-3" : ""}>
-            <li><a href="/categoria/astro-js" title={"Astro JS"} aria-label={"Categoría astro JS"} className={"block dark:hover:bg-zinc-800 dark:hover:text-zinc-200 p-2 rounded-lg hover:bg-zinc-100"}>Astro JS</a></li>
-        </ul>
-    )
-}
-
 export function BlockDiv() {
     function hideSideBar(event) {
         let sideBar = document.getElementById('sideBar');
