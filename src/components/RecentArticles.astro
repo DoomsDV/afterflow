@@ -26,7 +26,7 @@ const postsLength = allPosts.length - 1;
                         <div class="self-end my-3">
                             <span class="text-xs rounded-lg bg-zinc-100/80 px-2 py-1 font-semibold text-slate-600 dark:bg-zinc-900 dark:text-zinc-200">{post.data.createdOn}</span>
                             <h3 class="postTitle text-xl line-clamp-2 font-bold text-zinc-700 mt-5 dark:text-zinc-200 leading-[2rem]"><a href={"/blog/" + post.data.slug} title={post.data.title} class="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-br hover:from-blue-400 hover:to-blue-600 hover:transition-colors">{post.data.title}</a></h3>
-                            <p class="line-clamp-3 text-zinc-600 text-sm mt-2 dark:text-zinc-500">{post.summary}</p>
+                            <p class="line-clamp-3 text-zinc-600 text-sm mt-2 dark:text-zinc-500">{post.data.summary}</p>
                         </div>
                     </li>
                 )
