@@ -33,8 +33,9 @@ if (posts) {
          </svg>
     </h1>
     <article class="flex gap-x-14 mt-16 items-center lg:flex-wrap">
-        <img src={post.image} alt="Imagen de portada del artículo" class="h-96 bsm:h-48 w-1/2 rounded-lg object-cover object-center lg:w-full hover:object-center transition-all lg:h-80 lg:mx-auto">
-        <div class="lg:mt-5 lg:text-center">
+        <a href={"/blog/" + post.slug} class="w-1/2 lg:w-full"><img src={post.image} alt="Imagen de portada del artículo" class="h-96 bsm:h-48 rounded-lg object-cover object-center lg:w-full hover:object-center transition-all lg:h-80 lg:mx-auto"></a>
+        <div class="lg:mt-5 lg:text-center w-1/2 lg:w-full">
+        
             <ul class="flex space-x-2 lg:justify-center">
                 {
                     tags.map((tag:TagObject) => {
