@@ -5,6 +5,20 @@ import RecentArticles from '../components/RecentArticles.astro';
 import { urlAPI } from '../static/ts/vars';
 const request = await fetch(urlAPI + `/posts/`);
 const posts = await request.json();
+
+let filter = 'como'
+let files = await Astro.glob('../content/blog/*');
+
+let data = files.map(file => {
+    return file.frontmatter.title.toLowerCase();
+})
+
+function removeDiacritics(str:string) {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
+let results = data.filter(title => removeDiacritics(title).includes('que'))
+console.log(results);
 ---
 
 <Layout title="Afterflow - Inicio.">

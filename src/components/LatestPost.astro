@@ -1,7 +1,28 @@
 ---
-import { urlAPI } from "../static/ts/vars";
-const request = await fetch(urlAPI + "/latest_post/");
-const post = await request.json();
+import { getCollection, getEntry } from "astro:content";
+
+interface TagObject {
+    id: string,
+    collection: string,
+    data: {
+        name: string,
+        slug: string,
+    }
+}
+
+let tags: TagObject[] = [];
+let post;
+let posts = await getCollection('blog')
+
+if (posts) {
+    post = posts[0].data;
+
+    await Promise.all(post.tags.map(async (tag:any) => {
+        let tagData = await getEntry('tags', tag)
+        tags.push(tagData)
+    }))
+}
+
 ---
 <section>
     <h1 class="text-4xl font-extrabold my-5 text-slate-600 xr:text-3xl flex items-center dark:text-zinc-300">Última publicación
@@ -16,8 +37,8 @@ const post = await request.json();
         <div class="lg:mt-5 lg:text-center">
             <ul class="flex space-x-2 lg:justify-center">
                 {
-                    post.categories.map((category:any) => {
-                        return <li><a href={"/categoria/" + category.slug} title={category.name} class="text-xs rounded-xl px-3 py-1 bg-zinc-100 text-zinc-600 font-medium dark:bg-zinc-800 dark:text-zinc-200"><strong>#</strong>{category.name.toLowerCase()}</a></li>
+                    tags.map((tag:TagObject) => {
+                        return <li><a href={"/categoria/" + tag.data.slug} title={tag.data.name} class="text-xs rounded-xl px-3 py-1 bg-zinc-100 text-zinc-600 font-medium dark:bg-zinc-800 dark:text-zinc-200"><strong>#</strong>{tag.data.name}</a></li>
                     })
                 }
             </ul>
