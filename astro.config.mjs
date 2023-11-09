@@ -11,7 +11,8 @@ export default defineConfig({
   integrations: [tailwind(), preact(), mdx()],
   server: {
     headers: {
-      'Access-Control-Allow-Origin': 'no-cors'
+      'Access-Control-Allow-Origin': 'no-cors',
+      'X-Content-Type-Options': 'nosniff'
     }
   },
   adapter: netlify()
