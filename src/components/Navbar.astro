@@ -30,7 +30,7 @@ const allTags = await getCollection('tags');
             </ul>
         </div>
         <div class="flex items-center w-[350px] gap-x-5 justify-end">
-            <SearchInput parent={"navbar"} client:only="preact" />
+            <SearchInput parent={"navbar"} postIdName={"postsNavbar"} inputId={"searchInputNavbar"} client:only="preact" />
             <BtnChangeTheme client:only="preact" />
             <ButtonShowSideBar client:only="preact" />
         </div>

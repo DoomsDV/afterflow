@@ -1,6 +1,6 @@
 import { urlAPI } from "../../static/ts/vars";
 
-export default function SearchInput({parent}) {
+export default function SearchInput({parent, postIdName, inputId}) {
     let inputText = '';
     let listWords = [];
     async function getPosts(e) {
@@ -21,7 +21,7 @@ export default function SearchInput({parent}) {
                     const request = await fetch(urlAPI + `/search/posts/${e.target.value}/`);
                     const posts = await request.json();
 
-                    let postsPanel = document.getElementById('posts');
+                    let postsPanel = document.getElementById(postIdName);
                     postsPanel.innerHTML = ''
 
                     posts.map((post) => {
@@ -35,7 +35,7 @@ export default function SearchInput({parent}) {
         }
     }
     function removePostPanel() {
-        const postsPanel = document.getElementById('posts');
+        const postsPanel = document.getElementById(postIdName);
         postsPanel.innerHTML = ''
         postsPanel.classList.add('hidden')
         listWords = [];
@@ -43,11 +43,11 @@ export default function SearchInput({parent}) {
     return (
         <>
             <div class="relative flex items-center" className={ parent === 'navbar' ? "mdl:hidden" : 'w-full'}>
-                <form class="w-full" title="Buscar artículos" aria-label="Buscar artículos">
-                    <label for="search" class="hidden">Buscar artículo</label>
-                    <input onFocus={getPosts} onBlur={removePostPanel} onInput={getPosts} type="text" placeholder="Buscar artículos" id="search" class="bg-zinc-100/80 text-sm mb-1 outline-none px-3 py-2 dark:bg-zinc-800 rounded-xl dark:text-zinc-300 w-full" />
+                <form class="w-full" title="Buscar artículos">
+                    <label for={inputId} class="hidden">Buscar artículo</label>
+                    <input onFocus={getPosts} onBlur={removePostPanel} onInput={getPosts} type="text" placeholder="Buscar artículos" id={inputId} class="bg-zinc-100/80 text-sm mb-1 outline-none px-3 py-2 dark:bg-zinc-800 rounded-xl dark:text-zinc-300 w-full" />
                 </form>
-                <div id={"posts"} className={"hidden rounded-lg shadow px-3 py-2 w-80 max-h-[200px] absolute right-[-2rem] overflow-y-auto bg-white top-[100%] dark:bg-[#161616] dark:text-zinc-300"}></div>
+                <div id={postIdName} className={"hidden rounded-lg shadow px-3 py-2 w-80 max-h-[200px] absolute right-[-2rem] overflow-y-auto bg-white top-[100%] dark:bg-[#161616] dark:text-zinc-300"}></div>
             </div>
         </>
     )
