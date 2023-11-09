@@ -1,17 +1,48 @@
 ---
-import FilterArticles from "../../components/FilterArticles.astro";
 import Layout from "../../layouts/Layout.astro";
-import { urlAPI } from "../../static/ts/vars";
-
+import { getCollection } from "astro:content";
 export const prerender = false;
 const {slug} = Astro.params;
 
-// const request = await fetch(urlAPI + `/posts/category/${slug}/`)
-// const posts = await request.json();
+const posts = await getCollection('blog');
+const filterPosts = posts.filter(post => post.data.tags.includes(slug))
+const postsLength = filterPosts.length
 ---
-<!-- 
+
+
 <Layout title="Blog">
     <main class="md:px-20 sm:px-7 xr:px-5 px-[6rem]">
-        <FilterArticles posts={posts} />
+        <section class="mt-12">
+            <h1 class="text-4xl font-extrabold my-10 text-slate-600 xr:text-3xl flex items-end dark:text-zinc-300">Artículos encontrados
+                <svg class="icon icon-tabler icon-tabler-article ml-2" width="35" height="35" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path>
+                    <path d="M7 8h10"></path>
+                    <path d="M7 12h10"></path>
+                    <path d="M7 16h10"></path>
+                </svg>
+            </h1>
+            <ul class="mb-10 flex" class:list={[postsLength >= 3 ? "grid grid-cols-3 items-stretch justify-around gap-10 lg:grid-cols-2 mdl:grid-cols-1" : "items-stretch justify-around mdl:flex-wrap gap-10"]}>
+                {
+                    filterPosts ? filterPosts.map((post:any) => {
+                        return (
+                            <li class="bg-zinc-50/80 border-[1px] border-slate-100 p-6 rounded-lg grid grid-cols-1 dark:bg-[#14141480] dark:border-none dark:shadow-lg" 
+                                class:list={[
+                                    postsLength < 3 ? "w-1/2 gap-8 rounded-lg border-[1px] blg:w-full" : "",
+                                    postsLength > 3 && postsLength % 3 != 0 || postsLength === 3 ? 'lg:last:col-span-2 mdl:last:col-span-1' : '', 
+                                    postsLength % 2 === 0 ? 'lg:last:col-span-1' : ''
+                                ]}>
+                                <a href={"/blog/" + post.data.slug} title={post.data.title} class="self-center relative h-48 rounded-xl"><img src={post.data.image} alt="Imagen de portada" class="absolute h-full w-full object-cover object-left rounded-xl hover:object-center transition-all"></a>
+                                <div class="self-end my-3">
+                                    <span class="text-xs rounded-lg bg-zinc-100/80 px-2 py-1 font-semibold text-slate-600 dark:bg-zinc-900 dark:text-zinc-200">{post.data.createdOn}</span>
+                                    <h3 class="postTitle text-xl line-clamp-2 font-bold text-zinc-700 mt-5 dark:text-zinc-200 leading-[2rem]"><a href={"/blog/" + post.data.slug} title={post.data.title} class="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-br hover:from-blue-400 hover:to-blue-600 hover:transition-colors">{post.data.title}</a></h3>
+                                    <p class="line-clamp-3 text-zinc-600 text-sm mt-2 dark:text-zinc-500">{post.data.summary}</p>
+                                </div>
+                            </li>
+                        )
+                    }) : ''
+                }
+            </ul>
+        </section>
     </main>
-</Layout> -->
+</Layout>
