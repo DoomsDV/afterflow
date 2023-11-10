@@ -1,5 +1,5 @@
 ---
-import SearchInput from "../components/jsx/SearchInput";
+// import SearchInput from "../components/jsx/SearchInput";
 import { BlockDiv} from "../components/jsx/ButtonsSidePanel"
 import { getCollection } from "astro:content";
 
@@ -14,9 +14,9 @@ const parent = 'sideBar';
     </ul>
     <div class="h-full w-full px-3 py-4 ">
         <ul class="space-y-10">
-            <li>
+            <!-- <li>
                 <SearchInput parent={"sideBar"} postIdName={"postsSideBar"} inputId={"searchInputSideBar"} client:only="preact" />
-            </li>
+            </li> -->
             <li>
                 <h3 class={"text-lg font-medium"}>Categorías</h3>
                 <ul class="text-gray-700" class:list={[parent === 'sideBar' ? "pl-6 mt-3" : '']}>

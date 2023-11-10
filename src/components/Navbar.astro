@@ -1,11 +1,12 @@
 ---
-import SearchInput from "../components/jsx/SearchInput";
+// import Search from "./jsx/Search.astro";
 import Chevron from "../components/icons/Chevron-down.astro";
 import BtnChangeTheme from "../components/jsx/ButtonChangeTheme";
 import {ButtonShowSideBar} from "./jsx/ButtonsSidePanel";
 import { getCollection } from "astro:content";
 
 const allTags = await getCollection('tags');
+
 ---
 <header class="sticky top-0 z-50">
     <nav class="flex items-center px-4 py-3 bg-white dark:bg-[#141414] justify-between">
@@ -30,7 +31,7 @@ const allTags = await getCollection('tags');
             </ul>
         </div>
         <div class="flex items-center w-[350px] gap-x-5 justify-end">
-            <SearchInput parent={"navbar"} postIdName={"postsNavbar"} inputId={"searchInputNavbar"} client:only="preact" />
+            <!-- <Search parent="navbar" inputId="searchInput" listContent="coincidences" /> -->
             <BtnChangeTheme client:only="preact" />
             <ButtonShowSideBar client:only="preact" />
         </div>

@@ -1,0 +1,18 @@
+---
+interface Props {
+    inputId: string,
+    parent: string,
+    listContent: string
+}
+const {inputId, parent, listContent} = Astro.props;
+---
+<div class="relative flex items-center" 
+    class:list={[
+        parent === 'navbar' ? "mdl:hidden" : "w-full"
+    ]}>
+    <form class="w-full" title="Buscar artículos">
+        <label for={inputId} class="hidden">Buscar artículo</label>
+        <input type="text" id={inputId} placeholder="Buscar artículos" class="bg-zinc-100/80 text-sm mb-1 outline-none px-3 py-2 dark:bg-zinc-800 rounded-xl dark:text-zinc-300 w-full" />
+    </form>
+    <div id={listContent} class={"hidden rounded-lg shadow px-3 py-2 w-80 max-h-[200px] absolute right-[-2rem] overflow-y-auto bg-white top-[100%] dark:bg-[#161616] dark:text-zinc-300"}></div>
+</div>
